@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #121212;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .clock {
+            color: #ffffff;
+            font-size: 80px;
+            font-weight: bold;
+            background: #1f1f1f;
+            padding: 20px 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .clock span {
+            display: inline-block;
+            min-width: 85px;
+        }
+
+        .colon {
+            display: inline-block;
+            width: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .clock {
+                font-size: 60px;
+                padding: 15px 30px;
+            }
+
+            .clock span {
+                min-width: 65px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .clock {
+                font-size: 40px;
+                padding: 10px 20px;
+            }
+
+            .clock span {
+                min-width: 50px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .clock {
+                font-size: 30px;
+                padding: 5px 15px;
+            }
+
+            .clock span {
+                min-width: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="clock">
+        <span id="hours">00</span><span class="colon">:</span>
+        <span id="minutes">00</span><span class="colon">:</span>
+        <span id="seconds">00</span>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .pre {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-wrap: wrap;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .main {
+            columns: 4;
+            column-gap: 15px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+
+        .main>div {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .main>div img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .main {
+                columns: 3;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .main {
+                columns: 2;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <pre class="pre">Click anywhere to select a directory containing images</pre>
+
+    <div class="main" id="main">
+    </div>
+
+    <script>
+        const main = document.getElementById('main');
+        const pre = document.querySelector('.pre');
+        let selectedFiles = [];
+
+        async function handleDirectorySelection() {
+            try {
+                const dirHandle = await window.showDirectoryPicker();
+
+                for await (const entry of dirHandle.values()) {
+                    if (entry.kind === 'file') {
+                        if(entry.name.match(/\.(jpe?g|jpg|gif|bmp|webp)$/i)) {
+                            const fileHandle = await entry.getFile();
+                            selectedFiles.push(fileHandle);
+                        }
+                    }
+                }
+
+                displayFiles();
+            } catch (err) {
+                console.error('Directory selection canceled or failed:', err);
+            }
+        }
+
+        document.addEventListener('click', handleDirectorySelection);
+
+        function displayFiles() {
+            pre.style.display = 'none';
+            main.innerHTML = '';
+            selectedFiles.forEach((file) => {
+                const imageDiv = document.createElement('div');
+                const image = document.createElement('img');
+                image.src = URL.createObjectURL(file);
+                imageDiv.appendChild(image);
+                main.appendChild(imageDiv);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

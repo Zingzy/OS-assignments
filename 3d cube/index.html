@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Cube</title>
+    <style>
+        .main {
+            width: 300px;
+            height: 300px;
+            perspective: 600px;
+            margin: 200px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotate3d(1, 1, 0, 45deg);
+            animation: rotate 5s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 255, 0, 0.5);
+            opacity: 0.5;
+            border: 3px solid rgb(102, 188, 102);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+
+        .front {
+            transform: translateZ(150px);
+        }
+
+        .back {
+            transform: translateZ(-150px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(-150px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(-150px);
+        }
+
+        .top {
+            transform: rotateX(-90deg) translateZ(-150px);
+        }
+
+        .bottom {
+            transform: rotateX(90deg) translateZ(-150px);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate3d(0, 0, 0, 0deg);
+            }
+
+            100% {
+                transform: rotate3d(1, 1, 0, 360deg);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="cube">
+            <div class="face front">Front</div>
+            <div class="face back">Back</div>
+            <div class="face left">Left</div>
+            <div class="face right">Right</div>
+            <div class="face top">Top</div>
+            <div class="face bottom">Bottom</div>
+        </div>
+</body>
+
+</html>

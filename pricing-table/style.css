@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    background-color: #110B0B;
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 2%;
+}
+
+#header {
+    color: #EFE7E6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+#tagline {
+    color: #EFE7E6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.pricing-table {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.plan {
+    text-align: center;
+    color: #EFE7E6;
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
+    padding: 20px;
+    background-color: #151412;
+    border-radius: 20px;
+    height: 700px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-inner {
+    flex-grow: 1;
+}
+
+#pro-plan {
+    background-color: #362b2b;
+}
+
+.plan h2 {
+    font-size: 1.9rem;
+    font-weight: 600;
+}
+
+.plan h3 {
+    font-size: 1.0rem;
+    font-weight: 400;
+}
+
+.plan ul {
+    list-style-type: none;
+    padding: 0;
+    line-height: 3.5;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.plan button {
+    background-color: #222b24;
+    color: #EFE7E6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    align-self: center;
+    margin: 10px 0;
+}
+
+.plan button:hover {
+    transform: translate(0, -3px);
+    transition: transform ease 0.2s;
+}
+
+#pro-plan button {
+    background-color: #c7aca9;
+    color: black;
+}
+
+#pro-plan button:hover {
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 80px -10px #c7aca9;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 30px;
+}
+
+.custom-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 1000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #6AB0AC;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        width: 90%;
+        padding: 5% 20px;
+        text-align: center;
+    }
+
+    #header {
+        font-size: 2rem;
+    }
+
+    #tagline {
+        font-size: 1.2rem;
+    }
+
+    .plan {
+        height: 600px;
+    }
+
+    .plan ul {
+        line-height: 3;
+    }
+
+}
