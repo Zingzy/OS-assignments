@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Patterns</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <button onclick="generatePattern();">Generate</button>
+    </div>
+
+    <script>
+        const shapes = [
+                "quad-circle-1",
+                "quad-circle-2",
+                "quad-circle-3",
+                "quad-circle-4",
+                "triangle-1",
+                "triangle-2",
+                "triangle-3",
+                "triangle-4",
+                "circle",
+                "hexagon",
+                "leaf",
+                "leaf-2",
+            ];
+            const colors = ["#c73195", "#93278c", "#a1a1f3", "#4c207f",];
+            const boxes = document.querySelectorAll(".container div");
+            let generatePattern = () => {
+                boxes.forEach((box) => {
+                    box.className = "";
+                    let i = Math.floor(Math.random() * shapes.length);
+                    let j = Math.floor(Math.random() * colors.length);
+                    box.classList.add(shapes[i]);
+                    box.style.backgroundColor = colors[j];
+                });
+            };
+            window.addEventListener("load", generatePattern);
+    </script>
+</body>
+</html>
